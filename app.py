@@ -42,7 +42,12 @@ if uploaded_files:
         chunk_size=1000,
         chunk_overlap=150
     )
-    chunks = splitter.split_documents(documents)
+    if not documents:
+    st.error("No text found in uploaded PDF")
+    st.stop()
+
+chunks = splitter.split_documents(documents)
+
 
     embeddings = GoogleGenerativeAIEmbeddings(
         model="models/embedding-001"
@@ -73,3 +78,4 @@ if uploaded_files:
 
 else:
     st.info(" Upload PDF files to start chatting")
+
