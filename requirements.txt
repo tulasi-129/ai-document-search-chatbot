@@ -19,7 +19,9 @@ python-dotenv
 # Machine Learning Utilities
 numpy
 scikit-learn
+streamlit
 #Pytorch  --If asked to install when run the open source model from huggingface. 
 torch
 torchvision
+
 torchaudio
