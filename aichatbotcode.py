@@ -13,7 +13,7 @@ from langchain.chains import RetrievalQA
 load_dotenv()
 
 st.set_page_config(page_title="AI RAG Chatbot", layout="wide")
-st.title("📄 AI RAG Chatbot")
+st.title(" AI RAG Chatbot")
 
 # Load Gemini LLM
 llm = ChatGoogleGenerativeAI(
@@ -66,9 +66,10 @@ if question:
 
     st.chat_message("assistant").markdown(answer)
 
-    with st.expander("📚 Sources"):
+    with st.expander("Sources"):
         for doc in response["source_documents"]:
             st.write(os.path.basename(doc.metadata.get("source", "")))
 
     st.session_state.chat_history.append({"role": "user", "content": question})
     st.session_state.chat_history.append({"role": "assistant", "content": answer})
+
