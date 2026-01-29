@@ -1,27 +1,12 @@
-# LangChain Core
-langchain
-langchain-core
-# OpenAI Integration
-langchain-openai
-openai
-# Anthropic Integration
-langchain-anthropic
-# Google Gemini (PaLM) Integration
-langchain-google-genai
-google-generativeai
-# Hugging Face Integration
-langchain-huggingface
+streamlit
+langchain==0.1.16
+langchain-community==0.0.32
+langchain-google-genai==1.0.3
+google-generativeai==0.5.4
+faiss-cpu==1.8.0
+sentence-transformers==2.6.1
+pypdf==4.2.0
+python-dotenv
+torch
 transformers
 huggingface-hub
-sentence-transformers
-# Environment Variable Management
-python-dotenv
-# Machine Learning Utilities
-numpy
-scikit-learn
-streamlit
-#Pytorch  --If asked to install when run the open source model from huggingface. 
-torch
-torchvision
-
-torchaudio
