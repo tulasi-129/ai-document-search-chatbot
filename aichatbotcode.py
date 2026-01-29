@@ -1,4 +1,3 @@
-import os
 import streamlit as st
 from dotenv import load_dotenv
 import tempfile
@@ -12,11 +11,11 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 
-# Load environment variables
+# Load env vars
 load_dotenv()
 
 st.set_page_config(page_title="AI RAG Chatbot", layout="wide")
-st.title("📄 AI RAG Chatbot (PDF Upload)")
+st.title("AI RAG Chatbot (PDF Upload)")
 
 # Gemini LLM
 llm = ChatGoogleGenerativeAI(
@@ -25,13 +24,12 @@ llm = ChatGoogleGenerativeAI(
 )
 
 uploaded_files = st.file_uploader(
-    "Upload PDF files",
+    "Upload one or more PDF files",
     type=["pdf"],
     accept_multiple_files=True
 )
 
-@st.cache_resource
-def build_vectorstore(uploaded_files):
+if uploaded_files:
     documents = []
 
     for uploaded_file in uploaded_files:
@@ -51,10 +49,6 @@ def build_vectorstore(uploaded_files):
     )
 
     vectorstore = FAISS.from_documents(chunks, embeddings)
-    return vectorstore
-
-if uploaded_files:
-    vectorstore = build_vectorstore(uploaded_files)
 
     qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
@@ -73,9 +67,9 @@ if uploaded_files:
 
         st.chat_message("assistant").markdown(answer)
 
-        with st.expander(" Sources"):
+        with st.expander("Sources"):
             for doc in response["source_documents"]:
                 st.write(doc.metadata.get("source", "Uploaded PDF"))
 
 else:
-    st.info(" Upload one or more PDF files to start chatting")
+    st.info(" Upload PDF files to start chatting")
