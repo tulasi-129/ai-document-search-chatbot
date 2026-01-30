@@ -60,22 +60,16 @@ retriever=vectorstore.as_retriever(search_kwargs={"k": 4}),
         return_source_documents=True
     )
 
-    question = st.chat_input("Ask a question from your PDF")
+question = st.chat_input("Ask a question from your PDF")
 
-    if question:
-        st.chat_message("user").markdown(question)
+if question:
+    st.chat_message("user").markdown(question)
 
-        response = qa_chain.invoke({"query": question})
-        answer = response["result"]
+    response = qa_chain.invoke({"query": question})
+    answer = response["result"]
 
-        st.chat_message("assistant").markdown(answer)
+    st.chat_message("assistant").markdown(answer)
 
-        with st.expander("Sources"):
-            for doc in response["source_documents"]:
-                st.write(doc.metadata.get("source", "Uploaded PDF"))
-
-else:
-    st.info(" Upload PDF files to start chatting")
-
-
-
+    with st.expander("Sources"):
+        for doc in response["source_documents"]:
+            st.write(doc.metadata.get("source", "Uploaded PDF"))
