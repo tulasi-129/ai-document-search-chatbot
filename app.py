@@ -42,7 +42,7 @@ if uploaded_files:
         chunk_size=1000,
         chunk_overlap=150
     )
-    if not documents:
+if not documents:
     st.error("No text found in uploaded PDF")
     st.stop()
 
@@ -76,5 +76,6 @@ retriever=vectorstore.as_retriever(search_kwargs={"k": 4}),
 
 else:
     st.info(" Upload PDF files to start chatting")
+
 
 
