@@ -19,7 +19,7 @@ st.title("AI RAG Chatbot (PDF Upload)")
 
 # Gemini LLM
 llm = ChatGoogleGenerativeAI(
-    model="models/gemini-1.5-flash",
+    model="gemini-1.5-flash",
     temperature=0.3
 )
 
@@ -73,4 +73,5 @@ if question:
     with st.expander("Sources"):
         for doc in response["source_documents"]:
             st.write(doc.metadata.get("source", "Uploaded PDF"))
+
 
