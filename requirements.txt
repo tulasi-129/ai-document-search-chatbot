@@ -5,4 +5,4 @@ langchain-google-genai==1.0.3
 google-generativeai==0.5.4
 pypdf==4.2.0
 python-dotenv
-faiss-cpu==1.8.0
+faiss-cpu==1.13.2
