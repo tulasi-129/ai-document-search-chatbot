@@ -18,7 +18,7 @@ if not os.getenv("GOOGLE_API_KEY"):
     st.stop()
 
 llm = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash",
+    model="gemini-1.5-flash-latest",
     temperature=0.3
 )
 
@@ -72,3 +72,4 @@ if question:
     with st.expander(" Sources"):
         for doc in response["source_documents"]:
             st.write(os.path.basename(doc.metadata.get("source", "data.pdf")))
+
