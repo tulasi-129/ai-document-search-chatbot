@@ -42,23 +42,21 @@ if uploaded_files:
         chunk_size=1000,
         chunk_overlap=150
     )
-if not text:
+    if not documents:
     st.error("No text found in uploaded PDF")
     st.stop()
 
 chunks = splitter.split_documents(documents)
 
 
-    embeddings = GoogleGenerativeAIEmbeddings(
-        model="models/embedding-001"
-    )
+embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
-    vectorstore = FAISS.from_documents(chunks, embeddings)
+vectorstore = FAISS.from_documents(chunks, embeddings)
 
-    qa_chain = RetrievalQA.from_chain_type(
+qa_chain = RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",
-        retriever=vectorstore.as_retriever(search_kwargs={"k": 4}),
+retriever=vectorstore.as_retriever(search_kwargs={"k": 4}),
         return_source_documents=True
     )
 
