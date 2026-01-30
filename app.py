@@ -42,7 +42,7 @@ if uploaded_files:
         chunk_size=1000,
         chunk_overlap=150
     )
-    if not documents:
+if not text:
     st.error("No text found in uploaded PDF")
     st.stop()
 
@@ -78,4 +78,5 @@ chunks = splitter.split_documents(documents)
 
 else:
     st.info(" Upload PDF files to start chatting")
+
 
