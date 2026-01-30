@@ -10,7 +10,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 
-ayout="wide")
+st.set_page_config(page_title="AI RAG Chatbot", layout="wide")
 st.title("AI RAG Chatbot")
 st.write("Ask questions from the uploaded PDF")
 
@@ -84,3 +84,4 @@ if question:
 
     st.subheader("Answer")
     st.write(response)
+
